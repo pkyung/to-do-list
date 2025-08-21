@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>todolist</title>
+    <link rel="stylesheet" href="todolist.css">
+</head>
+<body>
+    <div id="add-modal" class="modal">
+        <div class="add-content">
+            <span id="close">&times;</span>
+            <p> 
+                일정 : <input id="sche" type="text">
+                중요도 : <select id="importance" name="importance">
+                        <option value="red">상</option>
+                        <option value="yellow">중</option>
+                        <option value="green">하</option>
+                    </select>
+            </p>
+            <p>
+                요일 : <select id="dow-first" name="first">
+                        <option value="sun">일</option>
+                        <option value="mon">월</option>
+                        <option value="tue">화</option>
+                        <option value="wed">수</option>
+                        <option value="thu">목</option>
+                        <option value="fri">금</option>
+                        <option value="sat">토</option>
+                    </select> ~ 
+                    <select id="dow-last" name="last">
+                        <option value="sun">일</option>
+                        <option value="mon">월</option>
+                        <option value="tue">화</option>
+                        <option value="wed">수</option>
+                        <option value="thu">목</option>
+                        <option value="fri">금</option>
+                        <option value="sat">토</option>
+                    </select>
+            </p>
+            <p>
+                시간 : <input id="time-first" type="time"> ~
+                <input id="time-last" type="time">
+            </p>
+            <p>
+                <input id="add-button" value="등록" type="button">
+                <input id="add-cancel-button" value="취소" type="button">
+            </p>
+        </div>
+    </div>
+    <div id="update-default-modal" class="modal">
+        <div class="update-default-content">
+            <p> 
+                일정 : <input id="sche-default-update" type="text" disabled>
+                중요도 : <select id="importance-default-update" name="importance" disabled>
+                    <option class="red" value="red">상</option>
+                    <option class="yellow" value="yellow">중</option>
+                    <option class="green" value="green">하</option>
+                    </select>
+            </p>
+            <p>
+                요일 : <select id="dow-first-default-update" name="first" disabled>
+                        <option class="sun-f" value="sun">일</option>
+                        <option class="mon-f" value="mon">월</option>
+                        <option class="tue-f" value="tue">화</option>
+                        <option class="wed-f" value="wed">수</option>
+                        <option class="thu-f" value="thu">목</option>
+                        <option class="fri-f" value="fri">금</option>
+                        <option class="sat-f" value="sat">토</option>
+                    </select> ~ 
+                    <select id="dow-last-default-update" name="last" disabled>
+                        <option class="sun-l" value="sun">일</option>
+                        <option class="mon-l" value="mon">월</option>
+                        <option class="tue-l" value="tue">화</option>
+                        <option class="wed-l" value="wed">수</option>
+                        <option class="thu-l" value="thu">목</option>
+                        <option class="fri-l" value="fri">금</option>
+                        <option class="sat-l" value="sat">토</option>
+                    </select>
+            </p>
+            <p>
+                시간 : <input id="time-first-default-update" type="time" disabled> ~
+                <input id="time-last-default-update" type="time" disabled>
+            </p>
+            <p>
+                <input id="update-button" value="수정" type="button">
+                <input id="delete-defalut-button" value="삭제" type="button">
+                <input id="default-cancel-button" value="취소" type="button">
+            </p>
+        </div>
+    </div>
+    <div id="update-modal" class="modal">
+        <div class="update-content">
+            <p> 
+                일정 : <input id="sche-update" type="text">
+                중요도 : <select id="importance-update" name="importance">
+                        <option class="red" value="red">상</option>
+                        <option class="yellow" value="yellow">중</option>
+                        <option class="green" value="green">하</option>
+                    </select>
+            </p>
+            <p>
+                요일 : <select id="dow-first-update" name="first">
+                    <option class="sun-f" value="sun">일</option>
+                    <option class="mon-f" value="mon">월</option>
+                    <option class="tue-f" value="tue">화</option>
+                    <option class="wed-f" value="wed">수</option>
+                    <option class="thu-f" value="thu">목</option>
+                    <option class="fri-f" value="fri">금</option>
+                    <option class="sat-f" value="sat">토</option>
+                    </select> ~ 
+                    <select id="dow-last-update" name="last">
+                        <option class="sun-l" value="sun">일</option>
+                        <option class="mon-l" value="mon">월</option>
+                        <option class="tue-l" value="tue">화</option>
+                        <option class="wed-l" value="wed">수</option>
+                        <option class="thu-l" value="thu">목</option>
+                        <option class="fri-l" value="fri">금</option>
+                        <option class="sat-l" value="sat">토</option>
+                    </select>
+            </p>
+            <p>
+                시간 : <input id="time-first-update" type="time"> ~
+                <input id="time-last-update" type="time">
+            </p>
+            <p>
+                <input id="update-done-button" value="수정완료" type="button">
+                <input id="delete-button" value="삭제" type="button">
+                <input id="update-cancel-button" value="취소" type="button">
+            </p>
+        </div>
+    </div>
+    <div class="container">
+        <div class="todolist">
+            <h1>To do List</h1>
+        </div>
+        <div class="sorting">
+            <button id="add">추가</button>
+            <select name = "sort" id = "sorting" onchange="changeSortSelect()">
+                <option value="dis">====정렬기준 선택====</option>
+                <option value="priority">우선순위 정렬</option>
+                <option value="name">이름순 정렬</option>
+                <option value="time">시간순 정렬</option>
+            </select>
+        </div>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>SUN</th>
+                <th>MON</th>
+                <th>TUE</th>
+                <th>WED</th>
+                <th>THU</th>
+                <th>FRI</th>
+                <th>SAT</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr id="search">
+                <td id="sun-sche"></td>
+                <td id="mon-sche"></td>
+                <td id="tue-sche"></td>
+                <td id="wed-sche"></td>
+                <td id="thu-sche"></td>
+                <td id="fri-sche"></td>
+                <td id="sat-sche"></td>
+            </tr>
+        </tbody>
+    </table>
+    <script src="todolist.js"></script>
+</body>
+</html>
