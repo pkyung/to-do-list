@@ -1,4 +1,4 @@
-# 📑 squid game 웹 게임 📑
+# 📑 to-do-list 📑
 
 ## 프로젝트 구경하기
 [링크 바로가기](https://pkyung.github.io/to-do-list/)
